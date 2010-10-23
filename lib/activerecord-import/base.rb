@@ -8,7 +8,7 @@ module ActiveRecord::Import
   # Loads the import functionality for a specific database adapter
   def self.require_adapter(adapter)
     require File.join(AdapterPath,"/abstract_adapter")
-    require File.join(AdapterPath,"/#{adapter}_adapter")
+    require File.join(AdapterPath,"/#{adapter.sub("jdbc","")}_adapter") #Handle JRuby jdbc adapters.
   end
 
   # Loads the import functionality for the passed in ActiveRecord connection
